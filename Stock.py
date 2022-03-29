@@ -25,13 +25,13 @@ def get_data(days, tickers):
     for company  in tickers.keys():
         tkr= yf.Ticker(tickers[company])
         hist = tkr.history(period=f'{days}d')
-        hist.reset_index()
+        #hist.reset_index()
         hist.index = hist.index.strftime('%d  %B %Y')
         hist = hist[['Close']]
         hist.columns = [company]
         hist = hist.T
         hist.index.name = 'Name'
-        hist
+        #hist
         df = pd.concat([df,hist])    
     return df
 
